@@ -1,13 +1,16 @@
 
 import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "@/app/globals.css";
+import Providers from "@/app/providers";
+
 
 const geistSans = Geist({ subsets: ["latin"] });
 const geistMono = Geist_Mono({ subsets: ["latin"] });
 import "./globals.css";
+import AppNavbar from "@/components/ui/navbar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,11 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.className} ${geistMono.className} antialiased`}
-      >
-        {children}
+    <html lang="en" className='dark'>
+      <body>
+        <Providers>
+          <AppNavbar/>
+          {children}
+        </Providers>
       </body>
     </html>
   );
