@@ -1,5 +1,17 @@
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@heroui/react";
-import { Clapperboard } from "lucide-react";
+"use client";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@heroui/react";
+import { Clapperboard, Search, Facebook, Instagram, Youtube } from "lucide-react";
 
 export function MovieIcon() {
   return (
@@ -9,44 +21,72 @@ export function MovieIcon() {
   );
 }
 
-
-export const AcmeLogo = () => {
-  return (
-    <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
-      <path
-        clipRule="evenodd"
-        d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-        fill="currentColor"
-        fillRule="evenodd"
-      />
-    </svg>
-  );
-};
-
 export default function AppNavbar() {
   return (
-    <Navbar>
+    <Navbar className="bg-black text-white">
       <NavbarBrand>
         <MovieIcon />
         <p className="font-bold text-inherit">MyMoviesCollection</p>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem className="mr-6">
-          <Link color="foreground" href="#">
-            Movie Suggestion
+
+      <NavbarContent className="hidden sm:flex gap-6" justify="center">
+        <NavbarItem>
+          <Link href="#" className="text-white">
+            Movie Picker
           </Link>
         </NavbarItem>
-        <NavbarItem isActive>
-          <Link aria-current="page" href="#">
-            My Movies
+
+        <NavbarItem>
+          <Dropdown>
+            <DropdownTrigger>
+              <Button variant="ghost" className="text-white">
+                Top Genres ▾
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu>
+              <DropdownItem key={"11"}>Action</DropdownItem>
+              <DropdownItem key={"12"}>Comedy</DropdownItem>
+              <DropdownItem key={"13"}>Drama</DropdownItem>
+              <DropdownItem key={"14"}>Horror</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </NavbarItem>
+
+        <NavbarItem>
+          <Dropdown>
+            <DropdownTrigger>
+              <Button variant="ghost" className="text-white">
+                Top Actors ▾
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu>
+              <DropdownItem key={"1"}>Leonardo DiCaprio</DropdownItem>
+              <DropdownItem key={"2"}>Scarlett Johansson</DropdownItem>
+              <DropdownItem key={"3"}>Robert Downey Jr.</DropdownItem>
+              <DropdownItem key={"4"}>Chris Hemsworth</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </NavbarItem>
+
+        <NavbarItem>
+          <Link href="#" className="text-white">
+            Blog
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end">
+
+      <NavbarContent justify="end" className="gap-4">
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign In
-          </Button>
+          <Search className="text-white cursor-pointer" size={24} />
+        </NavbarItem>
+        <NavbarItem>
+          <Facebook className="text-white cursor-pointer" size={24} />
+        </NavbarItem>
+        <NavbarItem>
+          <Instagram className="text-white cursor-pointer" size={24} />
+        </NavbarItem>
+        <NavbarItem>
+          <Youtube className="text-white cursor-pointer" size={24} />
         </NavbarItem>
       </NavbarContent>
     </Navbar>
